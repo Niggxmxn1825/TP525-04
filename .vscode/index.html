@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Productos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      background-color: #f0f0f0;
+      margin: 5px 0;
+      padding: 8px;
+      border-radius: 5px;
+    }
+    input, button {
+      padding: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gestión de Productos</h1>
+
+  <form id="formulario">
+    <input type="text" id="nombreProducto" placeholder="Nombre del producto" required />
+    <button type="submit">Agregar</button>
+  </form>
+
+  <h2>Lista de Productos:</h2>
+  <ul id="listaProductos"></ul>
+
+  <script>
+    // Lista en memoria
+    const productos = [];
+
+    const formulario = document.getElementById('formulario');
+    const input = document.getElementById('nombreProducto');
+    const lista = document.getElementById('listaProductos');
+
+    // Evento al enviar el formulario
+    formulario.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nombre = input.value.trim();
+      if (nombre !== '') {
+        productos.push(nombre); // Agrega a la lista en memoria
+        mostrarProductos();
+        input.value = ''; // Limpia el campo
+      }
+    });
+
+    // Mostrar la lista actual
+    function mostrarProductos() {
+      lista.innerHTML = '';
+      productos.forEach((producto, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${producto}`;
+        lista.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
