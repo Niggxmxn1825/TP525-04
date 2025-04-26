@@ -1,5 +1,5 @@
 const express = require('express');
-const productosRoutes = require('./routes/productosRoutes'); // Asegúrate de crear esta carpeta/ruta
+const productosRoutes = require('../routes/productosRoutes'); // Asegúrate de crear esta carpeta/ruta
 
 const app = express();
 app.use(express.json()); // Middleware para parsear JSON
